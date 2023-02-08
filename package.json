@@ -1,0 +1,16 @@
+{
+  "name": "typosquatting-detector",
+  "version": "0.0.1",
+  "description": "",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Marcin Gołębiowski",
+  "license": "MIT",
+  "dependencies": {
+    "punycode": "^2.3.0"
+  }
+}
