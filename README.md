@@ -2,4 +2,4 @@
 A typosquatting detection library (nodejs)
 
 # Details
-Version 0.0.2
+Version 0.0.3
