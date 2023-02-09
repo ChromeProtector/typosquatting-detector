@@ -15,20 +15,20 @@ var transpositions = function (word, k) {
     return result;
 }
 
-function swap(input, i, j) {
+function swap(word, i, j) {
     var result = "";
-    for (var index = 0; index < input.length; index++) {
+    for (var index = 0; index < word.length; index++) {
         if (index == i) {
-            result += input[j];
+            result += word[j];
         }
         else if (index == j) {
-            result += input[i];
+            result += word[i];
         }
         else {
-            result += input[index];
+            result += word[index];
         }
     }
     return result;
 }
 
-module.exports = { transpositions }
+module.exports = { transpositions, swap }
