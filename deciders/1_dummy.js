@@ -1,6 +1,6 @@
 // First dummy "decider"
 
-function decide(metrics_vectors) {
+function decide(metrics_vectors, model) {
     for (var i = 0; i < metrics_vectors.length; i++) {
         var metrics_vector = metrics_vectors[i]
 
@@ -8,7 +8,7 @@ function decide(metrics_vectors) {
         // 0,1,2,3,4,5,6,7,8,9,10,11
 
         // protected domain
-        if (metrics_vector[getMetric(1, 0)] == true)
+        if (metrics_vector[getMetric(1, 0)] == 1)
         {
             return 0
         }
@@ -17,7 +17,7 @@ function decide(metrics_vectors) {
         if (idn == 1) { return 1 } // consider all idn as unsafe
 
         var domain_up = metrics_vector[getMetric(11, 5)]
-        if (domain_up) { return 1 } // consider domains where first-level domain is somewhere else as unsafe
+        if (domain_up > 0) { return 1 } // consider domains where first-level domain is somewhere else as unsafe
     }
     return 0
 }

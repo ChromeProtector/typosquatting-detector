@@ -1,6 +1,9 @@
 const _punnyCode = require('./punycode')
 
 var detectIdn = function (domain) {
+
+    if (domain == null) return false
+
     if (domain.indexOf("xn--") == 0) {
         return true;
     }
@@ -12,11 +15,14 @@ var getDomain = function (urlInput) {
 }
 
 var getTLD = function (domain) {
+    if (domain == null) return null
+
     var parts = getParts(domain)
     return parts[parts.length - 1]
 }
 
 var getParts = function (domain) {
+    if (domain == null) return null
     return domain.split(".")
 }
 

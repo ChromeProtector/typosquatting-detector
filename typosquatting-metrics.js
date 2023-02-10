@@ -49,7 +49,7 @@ function get(url, protectedDomain) {
     {
         var dimension = dimensions[i]
         for (var j = 0; j < m; j++) {
-            vector[m * i + j] = _metrics[j].getValue(dimension, protectedDomain)
+            vector[m * i + j] = dimension != null ?  _metrics[j].getValue(dimension, protectedDomain) : 0
         }
     }
 
