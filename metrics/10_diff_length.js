@@ -1,7 +1,5 @@
-const _url = require('../url')
-
 function getValue(dimension, protectedDomain) {
-    return _url.detectIdn(dimension)
+    return Math.abs(dimension.length - protectedDomain.length)
 }
 
 module.exports = { getValue }

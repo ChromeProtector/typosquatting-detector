@@ -1,15 +1,15 @@
 var distance = function (word1, word2) {
-    var defaultWeight = (c1, c2) => 1;
-    var defaultEqual = (c1, c2) => c1 == c2;
+    var defaultWeight = (c1, c2) => 0
+    var defaultEqual = (c1, c2) => c1 == c2 ? 1: 0
 
-    return customDistance(word1, word2, defaultEqual, defaultWeight);
+    return customDistance(word1, word2, 1, defaultEqual, defaultWeight)
 }
 
-var customDistance = function (word1, word2, isEqual, weightFunction) {
-    var d = new Array(word1.length + 1);
+var customDistance = function (word1, word2, limit, isEqual, weightFunction) {
+    var d = new Array(word1.length + 1)
 
     for (var i = 0; i < d.length; i++) {
-        d[i] = new Array(word2.length + 1);
+        d[i] = new Array(word2.length + 1)
     }
 
     for (var j = 0; j <= word2.length; j++) {
@@ -23,11 +23,11 @@ var customDistance = function (word1, word2, isEqual, weightFunction) {
     for (var i = 1; i <= word1.length; i++) {
         for (var j = 1; j <= word2.length; j++) {
             var compareResult = isEqual(word1[i - 1], word2[j - 1]);
-            if (compareResult) {
-                d[i][j] = d[i - 1][j - 1];
+            if (compareResult >= limit) {
+                d[i][j] = d[i - 1][j - 1] + weightFunction(word1[i - 1], word2[j - 1])
             }
             else {
-                d[i][j] = weightFunction(word1[i - 1], word2[j - 1]) + Math.min(d[i - 1][j], Math.min(d[i][j - 1], d[i - 1][j - 1]));
+                d[i][j] = 1 + Math.min(d[i - 1][j], Math.min(d[i][j - 1], d[i - 1][j - 1]));
             }
         }
     }
@@ -36,7 +36,7 @@ var customDistance = function (word1, word2, isEqual, weightFunction) {
 }
 
 // not so fast fuzzy search using above algorithm (will be improved)
-var custom3DDistance = function (textToSearch, pattern, isEqual, weightFunction) {
+var custom3DDistance = function (textToSearch, pattern, limit, isEqual, weightFunction) {
     var n_org = textToSearch.length;
     var m = pattern.length;
 
@@ -64,17 +64,11 @@ var custom3DDistance = function (textToSearch, pattern, isEqual, weightFunction)
         for (var j = 1; j <= m; j++) {
             for (var i = 1; i <= n; i++) {
                 var compareResult = isEqual(pattern[j - 1], text[i - 1])
-                if (compareResult) {
-                    var tmp = d[k][j - 1][i - 1];
-                    d[k][j][i] = tmp;
-
-                    // some opt.
-                    if (tmp == 0 && j == m) {
-                        return [tmp, k, i + k - 1]
-                    }
+                if (compareResult >= limit) {
+                    d[k][j][i] = d[k][j - 1][i - 1] + weightFunction(text[i - 1], pattern[j - 1])
                 }
                 else {
-                    d[k][j][i] = weightFunction(text[i - 1], pattern[j - 1]) + Math.min(d[k][j - 1][i], Math.min(d[k][j][i - 1], d[k][j - 1][i - 1]));
+                    d[k][j][i] = 1 + Math.min(d[k][j - 1][i], Math.min(d[k][j][i - 1], d[k][j - 1][i - 1]))
                 }
             }
         }
@@ -89,13 +83,13 @@ var custom3DDistance = function (textToSearch, pattern, isEqual, weightFunction)
             var tmp = d[k][m][l]
 
             if (tmp <= computedDistance || computedDistance == -1) {
-                computedDistance = tmp;
-                pattern_start = k;
-                pattern_end = l - 1 + k;
+                computedDistance = tmp
+                pattern_start = k
+                pattern_end = l - 1 + k
             }
         }
     }
-    return [computedDistance, pattern_start, pattern_end];
+    return [computedDistance, pattern_start, pattern_end]
 }
 
-module.exports = { distance, customDistance, custom3DDistance };
+module.exports = { distance, customDistance, custom3DDistance }

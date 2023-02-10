@@ -1,5 +1,4 @@
 function getValue(dimension, protectedDomain) {
-
     return (dimension == protectedDomain)
 }
 

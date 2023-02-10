@@ -1,14 +1,14 @@
 const _metric1 = require('./metrics/0_match_text')
 const _metric2 = require('./metrics/1_match_length')
-const _metric3 = require('./metrics/2_idn')
+const _metric3 = require('./metrics/2_match_idn')
 const _metric4 = require('./metrics/3_exact_levenshein')
 const _metric5 = require('./metrics/4_samelook_levenshein')
 const _metric6 = require('./metrics/5_exact_bitap')
 const _metric7 = require('./metrics/6_samelook_bitap')
 const _metric8 = require('./metrics/7_has_weird_port')
 const _metric9 = require('./metrics/8_transpositions_k_2_levenshein')
-const _metric10 = require('./metrics/9_length')
-const _metric11 = require('./metrics/10_substing')
+const _metric10 = require('./metrics/9_val_length')
+const _metric11 = require('./metrics/10_diff_length')
 
 const _metrics = [_metric1, _metric2, _metric3, _metric4, _metric5, _metric6, _metric7, _metric8, _metric9, _metric10, _metric11]
 
