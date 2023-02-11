@@ -1,4 +1,4 @@
-const _punnyCode = require('./punycode')
+const _punyCode = require('./punycode')
 
 var detectIdn = function (domain) {
 
@@ -30,8 +30,16 @@ var getDomainParts = function (url) {
     var domain = getDomain(url)
     var parts;
     if (detectIdn(domain)) {
-        var rawDomain = _punnyCode.decode(domain.slice(4))
-        parts = getParts(rawDomain)
+        try
+        {
+            var rawDomain = _punyCode.decode(domain.slice(4))
+            parts = getParts(rawDomain)
+        }
+        catch (ex)
+        {
+            return null
+        }
+
     }
     else {
         parts = getParts(domain)
