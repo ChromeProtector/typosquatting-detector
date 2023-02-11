@@ -1,6 +1,6 @@
 // classifier based on libsvm-js
 
-const SVM = require('../node_modules/libsvm-js/asm');
+const SVM = require('libsvm-js/asm');
 
 function createSVM() {
     const svm = new SVM({

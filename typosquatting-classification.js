@@ -1,5 +1,5 @@
 const _classifier1 = require('./classification/1_dummy')
-const _classifier2 = require('./classification/2_libsvm-js')
+const _classifier2 = require('./classification/2_svm')
 
 var getLabel = function (metrics_vectors, algorithm, model) {
     if (algorithm == 1) {
