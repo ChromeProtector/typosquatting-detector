@@ -1,6 +1,6 @@
-// First dummy "decider"
+// First dummy "classifier"
 
-function decide(metrics_vectors, model) {
+function getLabel(metrics_vectors, model) {
     for (var i = 0; i < metrics_vectors.length; i++) {
         var metrics_vector = metrics_vectors[i]
 
@@ -27,4 +27,4 @@ function getMetric(metric, dimension) {
     return c
 }
 
-module.exports = { decide }
+module.exports = { getLabel }

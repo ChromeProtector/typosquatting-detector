@@ -1,7 +1,7 @@
 const _typosquatting = require('../typosquatting')
 const _metrics = require("../typosquatting-metrics")
 const _punnyCode = require('../punycode')
-const _svm = require("../deciders/2_libsvm-js")
+const _svm = require("../classification/2_libsvm-js")
 
 test('Is able to genere model', () => {
   var fakeGoogle = "https://xn--" + _punnyCode.encode("gógle.pl") + "/"

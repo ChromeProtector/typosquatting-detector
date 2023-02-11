@@ -1,3 +1,5 @@
+// classifier based on libsvm-js
+
 const SVM = require('../node_modules/libsvm-js/asm');
 
 function createSVM() {
@@ -19,7 +21,7 @@ function train(vectors, labels) {
     return svm.serializeModel()
 }
 
-function decide(metrics_vectors, model) {
+function getLabel(metrics_vectors, model) {
     var svm = SVM.load(model)
 
     for (var i = 0; i < metrics_vectors.length; i++) {
@@ -33,4 +35,4 @@ function decide(metrics_vectors, model) {
     return 0
 }
 
-module.exports = { decide, train, createSVM }
+module.exports = { getLabel, train, createSVM }

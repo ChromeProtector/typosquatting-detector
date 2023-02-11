@@ -1,5 +1,5 @@
 const _metrics = require('./typosquatting-metrics')
-const _decide = require('./typosquatting-decide')
+const _classifier = require('./typosquatting-classification')
 const defaultAlgorithm = 1
 
 var decide = function (url,  protectedDomains, model) {
@@ -8,7 +8,7 @@ var decide = function (url,  protectedDomains, model) {
 
 var decideExt = function (url, algorithm,  protectedDomains, model) {
     var vectors = _metrics.getMetrics(url, protectedDomains)
-    var result = _decide.getCategory(vectors, algorithm, model)
+    var result = _classifier.getLabel(vectors, algorithm, model)
 
     return result
 }
