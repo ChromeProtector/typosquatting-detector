@@ -14,25 +14,15 @@ function createSVM() {
     return svm
 }
 
-function train(vectors, labels) {
+function train(samples, labels) {
     var svm = createSVM()
-    svm.train(vectors, labels)
-
+    svm.train(samples, labels)
     return svm.serializeModel()
 }
 
-function getLabel(metrics_vectors, model) {
+function getLabel(sample, model) {
     var svm = SVM.load(model)
-
-    for (var i = 0; i < metrics_vectors.length; i++) {
-        var vector = metrics_vectors[i]
-        const predictedLabel = svm.predictOne(vector)
-        if (predictedLabel == 1) {
-            return 1
-        }
-    }
-
-    return 0
+    return svm.predictOne(sample)
 }
 
 module.exports = { getLabel, train, createSVM }

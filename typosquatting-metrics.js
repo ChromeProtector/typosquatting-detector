@@ -21,14 +21,6 @@ const _dim6 = require('./metrics/dimensions/5_third_and_up')
 
 const _dimensions = [_dim1, _dim2, _dim3, _dim4, _dim5, _dim6]
 
-function getMetrics(url, protectedDomains) {
-    var results = new Array(protectedDomains.length)
-    for (var i = 0; i < protectedDomains.length; i++) {
-        results[i] = get(url, protectedDomains[i])
-    }
-    return results
-}
-
 function getDimensions(url) {
     var results = new Array(_dimensions.length)
 
@@ -39,7 +31,7 @@ function getDimensions(url) {
     return results
 }
 
-function get(url, protectedDomain) {
+function getMetrics(url, protectedDomain) {
     var dimensions = getDimensions(url, protectedDomain)
     var vector = new Array(dimensions.length * _metrics.length)
 
