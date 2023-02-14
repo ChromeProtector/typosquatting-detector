@@ -1,12 +1,13 @@
 {
   "name": "typosquatting-detector",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build-bundle-js": "browserify .\\lib\\metrics\\0_match_text.js .\\lib\\metrics\\1_match_length.js .\\lib\\metrics\\2_match_idn.js .\\lib\\metrics\\3_exact_levenshtein.js .\\lib\\metrics\\4_samelook_levenshtein.js .\\lib\\metrics\\5_exact_bitap.js .\\lib\\metrics\\6_samelook_bitap.js .\\lib\\metrics\\7_has_weird_port.js .\\lib\\metrics\\8_transpositions_k_2_levenshtein.js .\\lib\\metrics\\9_val_length.js .\\lib\\metrics\\10_diff_length.js .\\lib\\metrics\\dimensions\\1_tld.js .\\lib\\metrics\\dimensions\\2_second_level_domain.js .\\lib\\metrics\\dimensions\\3_without_dots.js .\\lib\\metrics\\dimensions\\4_filtered_domain.js .\\lib\\metrics\\dimensions\\5_third_and_up.js .\\lib\\classification\\1_dummy.js .\\lib\\classification\\2_svm.js .\\lib\\bitap.js .\\lib\\levenshtein.js .\\lib\\look.js .\\lib\\punycode.js .\\lib\\typosquatting-classification.js .\\lib\\typosquatting-metrics.js .\\lib\\typosquatting.js .\\lib\\url.js .\\lib\\word.js --standalone typosquatting > dist\\bundle.js"
   },
   "author": "Marcin Gołębiowski",
   "license": "MIT",
