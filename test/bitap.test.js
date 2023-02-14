@@ -1,4 +1,4 @@
-const _bitap = require('../bitap')
+const _bitap = require('../lib/bitap')
 
 test('Is able to find match using bitap', () => {
     expect(_bitap.exactBitap("2google", "google")).toBe("google")

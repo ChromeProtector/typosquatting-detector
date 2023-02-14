@@ -1,4 +1,4 @@
-const punyCode = require('../punycode')
+const punyCode = require('../lib/punycode')
 
 test('Is able to decode punycode', () => {
     expect(punyCode.decode("Mnchen-3ya")).toBe("München")

@@ -1,4 +1,4 @@
-const _url = require('../url')
+const _url = require('../lib/url')
 
 test('Is able to extract domain', () => {
   expect(_url.getDomain("https://google.com/")).toBe("google.com")

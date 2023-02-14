@@ -1,5 +1,5 @@
-const _typosquatting = require('../typosquatting')
-const _punnyCode = require('../punycode')
+const _typosquatting = require('../lib/typosquatting')
+const _punnyCode = require('../lib/punycode')
 
 test('Is able to detect safe IDN website', () => {
   var fakeGoogle = "https://xn--" + _punnyCode.encode("google.pl") + "/"

@@ -1,4 +1,4 @@
-const _look = require('../look')
+const _look = require('../lib/look')
 
 test('Is able to tell if two characters does not look similar', () => {
   expect(_look.compare("c", "e")).toBe(0)

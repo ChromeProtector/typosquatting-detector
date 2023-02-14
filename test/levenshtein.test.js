@@ -1,4 +1,4 @@
-const levenshtein = require('../levenshtein')
+const levenshtein = require('../lib/levenshtein')
 
 test('Is able to compute distance between words using a levenshtein algorithm', () => {
     expect(levenshtein.distance("word1", "word")).toBe(1)
