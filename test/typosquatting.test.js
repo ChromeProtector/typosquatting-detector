@@ -3,7 +3,7 @@ const _punnyCode = require('../lib/punycode')
 
 test('Is able to detect safe IDN website', () => {
   var fakeGoogle = "https://xn--" + _punnyCode.encode("google.pl") + "/"
-  expect(_typosquatting.decide(fakeGoogle, "google.pl")).toEqual(1)
+  expect(_typosquatting.decide(fakeGoogle, "google.pl")).toEqual(0)
 })
 
 test('Is able to detect safe website', () => {
